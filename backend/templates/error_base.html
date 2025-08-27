@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+	<head>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		{% block head %}
+			<link rel="stylesheet" href="{% static 'css/core.css' %}">
+			<meta charset="utf-8">
+			<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+		{% endblock %}
+	</head>
+
+	<body>
+		<header>
+			<p class="str">{% block header %}WAYLIN{% endblock %}</p>
+		</header>
+
+		<main>
+			{% block body %}
+				{% block message %}
+					message
+				{% endblock %}
+			{% endblock %}
+		</main>
+
+		<footer>
+			<p class="str">{% block footer %}WAYLIN{% endblock %}</p>
+		</footer>
+	</body>
+</html>

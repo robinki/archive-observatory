@@ -1,0 +1,12 @@
+services:
+  backend:
+    env_file:
+      - .env/.env.dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:80
+    volumes:
+      - ./backend/:/usr/src/backend/  # mount sources for easy debugging
+    ports:
+      - "80:80"

@@ -1,0 +1,9 @@
+*~$*
+.env/*
+.DS_Store
+db_backups
+server.log
+.idea/
+todo
+run/static/
+*.xcf

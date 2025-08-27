@@ -1,0 +1,120 @@
+body {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px
+}
+
+header {
+    position: relative;
+    margin: 5px 0;
+}
+
+header .str {
+    display: inline-block;
+    position: relative;
+    background-color: white; /* Optional: Match background color */
+    padding: 0 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .str::before, header .str::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50vw;
+    height: 2px;
+    background-color: black;
+}
+
+header .str::before {
+    left: -50vw;
+}
+
+header .str::after {
+    right: -50vw;
+}
+
+footer {
+    position: relative;
+    margin: 20px 0;
+}
+
+footer .str {
+    display: inline-block;
+    position: relative;
+    background-color: white; /* Optional: Match background color */
+    padding: 0 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+footer .str::before, footer .str::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50vw;
+    height: 2px;
+    background-color: black;
+}
+
+footer .str::before {
+    left: -50vw;
+}
+
+footer .str::after {
+    right: -50vw;
+}
+
+.str {
+	color: #545454;
+	font-size: 0.9em;
+}
+
+h1 {
+	font-family: "Open Sans", sans-serif;
+	font-size: 23px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 700;
+	line-height: 23px;
+}
+
+h3 {
+	font-family: "Open Sans", sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 700;
+	line-height: 23px;
+}
+
+p {
+	font-family: "Open Sans", sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+
+blockquote {
+	font-family: "Open Sans", sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+
+pre {
+	font-family: "Open Sans", sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}

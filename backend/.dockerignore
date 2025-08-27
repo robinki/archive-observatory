@@ -1,0 +1,11 @@
+.dockerignore
+Dockerfile
+.editorconfig
+.gitignore
+tmp
+venv/
+.DS_Store
+*.tmp
+*.ignore
+*.log
+_analysis/

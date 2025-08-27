@@ -1,0 +1,31 @@
+{% extends "apps/honeypot/book_honeypage.html" %}
+
+{% block links %}
+    {% if parent or children %}
+    <hr style="margin: 0; border: 1px solid #454545;">
+
+    <div style="min-height: 60px; display: flex; align-items: center; justify-content: space-between;">
+        {% if parent %}
+            <span style="margin-right: 10px;">
+                ← <a href="{{ parent.link }}">{{ parent.book_id }}-{{ parent.color }}</a>
+            </span>
+        {% endif %}
+
+        {% if children %}
+        <span style="margin-left: auto; text-align: right;">
+            {% for child in children %}
+                <span style="display: inline-block; text-align: right;">
+                    <a href="{{ child.link }}">{{ child.book_id }}-{{ child.color }}</a> →{% if not forloop.last %}{% endif %}
+                </span><br/>
+            {% endfor %}
+        </span>
+        {% endif %}
+    </div>
+
+    <hr style="margin: 0; border: 1px solid #454545;">
+    <br/>
+    {% endif %}
+{% endblock links %}
+
+
+

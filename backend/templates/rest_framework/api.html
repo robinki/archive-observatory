@@ -1,0 +1,42 @@
+{% extends "rest_framework/base.html" %}
+{% load honeypot_extra_tags %}
+{% load static %}
+
+{% block title %}
+	{% if name %}{{ name }} – {% endif %}Web Archive Observatory API
+{% endblock %}
+
+{% block branding %}
+	<a class='navbar-brand' rel="nofollow" href='/api/'>Web Archive Observatory API</a>
+{% endblock %}
+
+{% block content %}
+	{{ block.super }}
+	<footer>
+		<ul class="breadcrumb">
+			<li class="active">{{ SETTINGS_MODULE | title }}</li>
+			<li class="active">{{ DATABASE_ENGINE }}</li>
+			<li class="active">{{ USER_COUNT }}</li>
+			<li class="active">
+				<a href="/api/experiments/get_running_experiments/">
+					{% if RUNNING_EXPERIMENT_COUNT > 0 %}
+						{{ RUNNING_EXPERIMENT_COUNT }}
+					{% else %}
+						No
+					{% endif %}
+					Experiments running
+				</a>
+			</li>
+		</ul>
+	</footer>
+{% endblock %}
+
+{% block head %}
+	{{ block.super }}
+	<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+{% endblock %}
+
+{% block style %}
+	{{ block.super }}
+	 <link rel="stylesheet" type="text/css" href="{% static "css/api.css" %}"/>
+{% endblock %}

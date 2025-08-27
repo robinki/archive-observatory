@@ -1,0 +1,63 @@
+upstream api {
+    server backend:8000;
+}
+
+# frontend
+server {
+    listen 8080;
+    listen [::]:8080;
+
+    server_name www.mp.ias-lab.de;
+
+    charset utf-8;
+    proxy_pass_header Server;
+
+    # ignore cache frontend
+    location ~* (service-worker\.js)$ {
+        add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
+        expires off;
+        proxy_no_cache 1;
+    }
+
+    location ~ favicon.ico {
+        alias /var/www/frontend/favicon.ico;
+    }
+
+    # let nginx serve the frontend files
+    location / {
+        # rewrites static urls
+        # e.g. from /honey/abc/static/css/2.d0176e96.chunk.css/ to /static/css/2.d0176e96.chunk.css/
+        rewrite     ^.*(/static/.*)$ $1 break;
+
+        index       index.html;
+        root        /var/www/frontend/;
+        try_files   $uri $uri/ /index.html =404;
+    }
+}
+
+# backend
+server {
+    listen 8080;
+    listen [::]:8080;
+
+    server_name *.mp.ias-lab.de;
+
+    charset             utf-8;
+    proxy_pass_header   Server;
+
+    # serve static files from shared docker volume
+    location /run/static/ {
+        alias       /var/www/backend/static/;
+        autoindex   off;
+    }
+
+    # proxy for api requests
+    location / {
+        proxy_pass_header   Server;
+        proxy_set_header    Host $host;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Forwarded-Proto $scheme;
+        proxy_pass          http://api$request_uri;
+    }
+}
