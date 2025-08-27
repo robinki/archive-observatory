@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker exec -it $(docker ps --filter name=observatory-artifact-backend -aq) python manage.py createsuperuser
+docker compose -f docker-compose.dev.yml exec -it backend python manage.py createsuperuser

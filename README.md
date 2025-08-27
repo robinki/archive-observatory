@@ -26,14 +26,16 @@ This README includes "▶ Tech Notes" for the interested reader.
 - This artifact provides the code for the web archive observatory that was used in the paper to gather meta information about archive crawlers. By following this readme, you will be able to launch the observatory on your local machine to inspect it via localhost.
 - This artifact also provides visual proof of all attacks against web archive we presented in the main paper.
 
-##### Docker Installation
-First install the Docker Desktop including the Docker Engine and Docker Compose: https://docs.docker.com/engine/install/ubuntu/. 
+---
 
 ## Observatory Demonstration
 
 The purpose of this setup is to run the web archive observatory (Section 3 of the paper) locally. 
 For productive use, changes have to be made to host each observatory instance on a different domain. 
 Note that we cannot offer support for that.
+
+### Prerequisites (Docker)
+First install the Docker Desktop including the Docker Engine and Docker Compose: https://docs.docker.com/engine/install/ubuntu/. 
 
 ### (Re-)Start
 

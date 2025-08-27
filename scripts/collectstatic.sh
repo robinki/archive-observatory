@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker exec -it $(docker ps --filter name=observatory-artifact-backend -aq) python3 manage.py collectstatic --noinput
+docker compose -f docker-compose.dev.yml exec -it backend python3 manage.py collectstatic --noinput

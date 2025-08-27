@@ -5,6 +5,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    container_name: observatory-artifact-backend
     command: python3 manage.py runserver 0.0.0.0:80
     volumes:
       - ./backend/:/usr/src/backend/  # mount sources for easy debugging
