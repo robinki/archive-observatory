@@ -3,9 +3,8 @@
 # ignore everything
 *
 
-# except fingerprinting/
-!fingerprinting/
-!fingerprinting/*
+# except the pre-seeded database
+!dev.sqlite3
 
 */.DS_Store
 
