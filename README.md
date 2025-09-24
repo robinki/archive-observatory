@@ -165,3 +165,18 @@ Note that Archive Anachronisms are named Time Jump Attacks in the Video.
 
 
 >¹ The attack works only in Megalodon’s “snapshot-only” mode.
+
+## Towards Productive Use
+
+TLS fingerprinting requires that the observatory is served via HTTPS. 
+To serve the observatory productively, you would use the [docker-compose.yml](./docker-compose.yml) instead of the [docker-compose.dev.yml](./docker-compose.dev.yml) that is utilized in this demonstration.
+
+**tlsfp-rp** is a reverse proxy that attached TLS fingerprinting information to requests.
+The proxy receives requests to the observatory, conducts TLS fingerprinting via JA3 and JA4 and then attached the results to custom headers.
+The request is then proxied upstream to the observatory which unpacks the information and stores it in its access logs.
+
+Serving the observatory via HTTPS requires a domain and corresponding TLS certificates.
+We recommend using [Let's Encrypt](https://letsencrypt.org/) and [certbot](https://certbot.eff.org/) to obtain the certificates for your domain.
+Please check and adjust [.env](./.env/.env.dev) and docker-compose.yml to correctly set the certificate paths. 
+If certificate paths deviate from our format, please also update the paths in [tlsfp-rp/entrypoint.sh](./tlsfp-rp/entrypoint.sh). 
+Similarly to [scripts/restart.sh](./scripts/restart.sh), the productive compose file can be launched.
